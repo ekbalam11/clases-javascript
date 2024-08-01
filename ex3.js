@@ -1,4 +1,5 @@
-
+const fechaActual = new Date();
+console.log(fechaActual);
 
 class DNI {
 
@@ -14,24 +15,28 @@ class DNI {
         this.caducidad = caducidad;
     }
 
+
     // Nos devuelve 'true' o 'false' indicando si el DNI está caducado o no
     estaCaducado() {
+        if(this.caducidad < fechaActual) {
+            return true
+        } else {
+            return false
+        }
 
     }
 
     // Debe devolver 'true' si el DNI está bien formado, o 'false' en caso contrario
     esDniFormatoValido() {
+       const esDniValido = /^\d{8}[a-zA-Z]$/;
+       return esDniValido.test(this.numero)
+        } 
 
     }
 
-    // Dado un número de DNI, nos calcula la letra. Buscar por Internet como calcular la letra de un DNI
-    calculaLetraDni(dni) {
 
 
-    }
-}
-
-const midni = new DNI("Pedro Vallés", "1234567A", "1990-10-10");
+const midni = new DNI("Pedro Vallés", "1234567A", "2020-10-10");
 console.log(midni.estaCaducado());
 console.log(midni.esDniFormatoValido());
 

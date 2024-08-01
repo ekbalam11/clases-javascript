@@ -6,13 +6,29 @@ class Coche {
    * @param {boolean} gps Indica si lleva navegación GPS integrada
    * @param {number} deposito Indica cuan lleno está el depósito. 100 indica que está completamente lleno, 0 que esta vacío.
    */
-  constructor(modelo, matricula, gps) {}
+  constructor(modelo, matricula, gps, deposito = 100) {
+    this.modelo = modelo;
+    this.matricula = matricula;
+    this.gps = gps;
+    this.deposito = deposito
+  }
 
   // Llena el deposito a 100 unidades de gasolina
-  llenarDeposito() {}
+  llenarDeposito() {
+    this.deposito = 100;
+  }
 
   // Consume una unidad del deposito
-  usar() {}
+  usar() {
+    if(this.deposito > 0) {
+      this.deposito--;
+    } else {
+      console.log(`El depósito está vacío`);
+    }
+  }
+  estaDepositoVacio(){
+    return this.deposito === 0
+  }
 }
 
 const astra = new Coche("Opel Astra", "1984 GI", false);
